@@ -1,0 +1,2 @@
+lintipy==1.0.1
+{{cookiecutter.command}}=={{cookiecutter.version}}

@@ -1,0 +1,6 @@
+{
+  "linter": "linter (in lowercase)",
+  "command": "linter",
+  "directory": ".",
+  "version": "version"
+}

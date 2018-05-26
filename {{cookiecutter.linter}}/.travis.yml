@@ -1,0 +1,27 @@
+services:
+- docker
+sudo: true
+language: python
+python:
+- '3.6'
+jobs:
+  include:
+  - stage: deploy
+    script: "./build_with_docker.sh"
+    deploy:
+      provider: lambda
+      edge: true
+      skip_cleanup: true
+      function_name: lambdalint_{{cookiecutter.linter}}
+      region: eu-west-1
+      role: arn:aws:iam::327092303989:role/lambda-lint_lambda_function
+      runtime: python3.6
+      module_name: main
+      handler_name: handle
+      timeout: 300
+      dot_match: true
+      access_key_id: <CHANGE_ME>
+      secret_access_key:
+        secure: <CHANGE_ME>
+      on:
+        repo: LambdaLint/{{cookiecutter.linter}}
